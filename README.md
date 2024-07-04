@@ -1,36 +1,77 @@
-# ERC20                                                  
-ERC20 Token Implementation
+Sure, here is the updated README:
 
-Overview
+---
 
-This repository contains a basic implementation of an ERC20 token using Solidity, leveraging OpenZeppelin’s ERC20.sol and Ownable.sol contracts.
+# CustomToken.sol - ERC20 Token
 
-ERC20 Standard
+The `CustomToken.sol` contract is an ERC20 token named "CrazyToken" with the symbol "Crz". It includes a constructor that mints 100 tokens to the deployer's address upon deployment. This project is suitable for beginners looking to understand the structure and deployment of ERC20 tokens in Solidity.
 
-ERC20 is a widely adopted technical standard used for fungible tokens on the Ethereum blockchain. Fungible tokens are interchangeable with each other and can be used for various applications such as currencies, rewards, or assets.
+## Getting Started
 
-Features
+### Prerequisites
 
-	Name: CrazyToken
-	Symbol: Crz
-	Initial Supply: 100 tokens minted to the contract deployer (owner)
+To interact with this project, you'll need:
 
-Functionality
+- Access to an Ethereum development environment or blockchain network.
+- An integrated development environment (IDE) or text editor for Solidity code.
 
-	issueTokens: Allows the owner to mint additional tokens and assign them to a specified address.
-	destroyTokens: Allows any token holder to burn a specified amount of their own tokens.
+### Executing Program
 
-Usage
+To deploy and interact with the ERC20 token:
 
-		Deploying the Contract: Deploy the contract to an Ethereum-compatible network using tools like Remix IDE or Truffle Suite.
-		Interacting with the Contract: Use wallets like MetaMask to interact with the deployed contract. Owners can issue tokens to addresses, and any holder can burn their tokens as needed.
+#### Compile the Contract:
 
-Deployment
+- Use an Ethereum development environment like Remix or Hardhat.
+- Ensure Solidity compiler version ^0.8.20 is selected.
 
-To deploy the contract:
+#### Deploy the Contract:
 
-		Compile the contract in Remix or your preferred Solidity development environment.
-		Deploy the compiled contract to your desired Ethereum network.
-		Verify and interact with the deployed contract using a wallet or Ethereum development tools.
-  ![PHOTO-2024-06-30-17-10-21](https://github.com/shourya13x/ERC20/assets/121602573/0d3a8529-1ea6-4852-ac25-b57fd4962e1f)
+- Deploy the `CustomToken` contract.
+- The deployment will mint 100 tokens to your wallet address.
 
+#### Interact with the Token:
+
+- Use Ethereum wallets or scripts to send and receive "CrazyToken" (Crz) tokens.
+- Utilize functions such as `transfer`, `approve`, and `transferFrom` as per ERC20 standard.
+
+### Example Deployment (using Remix IDE)
+
+1. Navigate to Remix IDE at [Remix Ethereum](https://remix.ethereum.org/).
+
+2. Create a new file named `CustomToken.sol` and paste the following code:
+
+   ```solidity
+   // SPDX-License-Identifier: MIT
+   pragma solidity ^0.8.20;
+
+   import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+   import "@openzeppelin/contracts/access/Ownable.sol";
+
+   contract CustomToken is ERC20, Ownable {
+       constructor() ERC20("CrazyToken", "Crz") {
+           _mint(msg.sender, 100 * 10 ** decimals());
+       }
+       function issueTokens(address beneficiary, uint256 quantity) public onlyOwner {
+           _mint(beneficiary, quantity);
+       }
+       function destroyTokens(uint256 quantity) public {
+           _burn(msg.sender, quantity);
+       }
+   }
+   ```
+
+3. Compile and deploy the contract using Remix's Solidity compiler and deployment interface.
+
+4. After deployment, interact with the deployed contract by using Remix's interface or through other Ethereum tools.
+
+## Authors
+
+Shourya Gupta
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+
+---
+
+This README file should help others understand how to use and interact with your `CustomToken` contract.
