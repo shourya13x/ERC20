@@ -1,7 +1,3 @@
-Sure, here is the updated README:
-
----
-
 # CustomToken.sol - ERC20 Token
 
 The `CustomToken.sol` contract is an ERC20 token named "CrazyToken" with the symbol "Crz". It includes a constructor that mints 100 tokens to the deployer's address upon deployment. This project is suitable for beginners looking to understand the structure and deployment of ERC20 tokens in Solidity.
