@@ -1,73 +1,55 @@
-# CustomToken.sol - ERC20 Token
+# CrazyToken
 
-The `CustomToken.sol` contract is an ERC20 token named "CrazyToken" with the symbol "Crz". It includes a constructor that mints 100 tokens to the deployer's address upon deployment. This project is suitable for beginners looking to understand the structure and deployment of ERC20 tokens in Solidity.
+CrazyToken is an ERC-20 token smart contract that allows for token issuance, destruction, and transfer. It is designed for creating and managing tokens on the Ethereum blockchain.
+
+## Description
+
+The CrazyToken contract inherits from OpenZeppelin's ERC20 and Ownable contracts. It allows the contract owner to mint new tokens and send them to specified addresses. Additionally, any user can burn their tokens, reducing the total supply. The contract also supports the standard transfer function for moving tokens between addresses.
 
 ## Getting Started
 
-### Prerequisites
+### Installing
 
-To interact with this project, you'll need:
+To use this smart contract, you need to install the necessary dependencies:
 
-- Access to an Ethereum development environment or blockchain network.
-- An integrated development environment (IDE) or text editor for Solidity code.
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/shourya13x/ERC20.git
+    cd ERC20
+    ```
+
+2. **Install OpenZeppelin contracts:**
+    ```bash
+    npm install @openzeppelin/contracts
+    ```
+
+3. **Compile the contract:**
+    ```bash
+    npx hardhat compile
+    ```
 
 ### Executing Program
 
-To deploy and interact with the ERC20 token:
+1. **Deploy the contract using Remix IDE:**
+    - Open [Remix IDE](https://remix.ethereum.org/).
+    - Create a new file and paste the smart contract code.
+    - Compile the contract using the Solidity compiler.
+    - Deploy the contract on a test network.
 
-#### Compile the Contract:
+2. **Interact with the contract:**
+    - **Issue Tokens:** Call the `issueTokens` function with the recipient's address and the amount of tokens to mint.
+    - **Destroy Tokens:** Call the `destroyTokens` function with the amount of tokens to burn.
+    - **Transfer Tokens:** Use the `transfer` function to move tokens to another address.
 
-- Use an Ethereum development environment like Remix or Hardhat.
-- Ensure Solidity compiler version ^0.8.20 is selected.
+## Help
 
-#### Deploy the Contract:
-
-- Deploy the `CustomToken` contract.
-- The deployment will mint 100 tokens to your wallet address.
-
-#### Interact with the Token:
-
-- Use Ethereum wallets or scripts to send and receive "CrazyToken" (Crz) tokens.
-- Utilize functions such as `transfer`, `approve`, and `transferFrom` as per ERC20 standard.
-
-### Example Deployment (using Remix IDE)
-
-1. Navigate to Remix IDE at [Remix Ethereum](https://remix.ethereum.org/).
-
-2. Create a new file named `CustomToken.sol` and paste the following code:
-
-   ```solidity
-   // SPDX-License-Identifier: MIT
-   pragma solidity ^0.8.20;
-
-   import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-   import "@openzeppelin/contracts/access/Ownable.sol";
-
-   contract CustomToken is ERC20, Ownable {
-       constructor() ERC20("CrazyToken", "Crz") {
-           _mint(msg.sender, 100 * 10 ** decimals());
-       }
-       function issueTokens(address beneficiary, uint256 quantity) public onlyOwner {
-           _mint(beneficiary, quantity);
-       }
-       function destroyTokens(uint256 quantity) public {
-           _burn(msg.sender, quantity);
-       }
-   }
-   ```
-
-3. Compile and deploy the contract using Remix's Solidity compiler and deployment interface.
-
-4. After deployment, interact with the deployed contract by using Remix's interface or through other Ethereum tools.
+If you encounter issues, ensure that you have installed the necessary dependencies and that your environment is properly set up. If you need additional help, check the [OpenZeppelin documentation](https://docs.openzeppelin.com/contracts/4.x/).
 
 ## Authors
 
-Shourya Gupta
+- Shourya Gupta  
+  [GitHub](https://github.com/shourya13x)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
-
----
-
-This README file should help others understand how to use and interact with your `CustomToken` contract.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
